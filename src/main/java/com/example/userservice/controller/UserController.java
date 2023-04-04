@@ -64,7 +64,8 @@ public class UserController {
     @GetMapping("/user/{userId}")
     public ResponseEntity<ResponseUser> getUser(@PathVariable("userId") String userId) {
         UserDto user = userService.getUserByUserId(userId);
-        if (user == null) throw new UsernameNotFoundException("User Not Found");
+        if (user == null)
+            throw new UsernameNotFoundException("User Not Found");
 
         ResponseUser responseUser = new ModelMapper().map(user, ResponseUser.class);
 
